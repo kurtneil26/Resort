@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ResortPackage;
 use Yajra\DataTables\Facades\DataTables;
 
 class AdminController extends Controller
@@ -14,7 +15,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        //query the model
+        $packages = ResortPackage::where('id', 1)->first();
+      //  dd($packages);
+        return view('welcome', compact('packages'));
     }
 
     public function dashboard()
