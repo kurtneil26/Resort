@@ -180,7 +180,7 @@
                             <!-- Start::slide -->
                             <li class="slide">
                                 <a href="#faq" class="side-menu__item">
-                                    <span class="side-menu__label">About Us</span>
+                                    <span class="side-menu__label">Package</span>
                                 </a>
                             </li>
                             <!-- End::slide -->
@@ -278,6 +278,8 @@
             </div>
         </aside>
         <!-- End::app-sidebar -->
+
+
     </div>
 
     <!-- Back To Top -->

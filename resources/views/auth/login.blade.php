@@ -38,7 +38,7 @@
             <div class="xxl:col-span-4 xl:col-span-4 lg:col-span-4 md:col-span-6 sm:col-span-8 col-span-12">
                 <div class="my-[2.5rem] flex justify-center">
                     <a href="index.html">
-                        <img src="{{ 'backend/assets/images/brand-logos/desktop-logo.png' }}" alt="logo"
+                        <img class="" src="{{ 'backend/assets/images/brand-logos/desktop-logo.png' }}" alt="logo"
                             class="desktop-logo">
                         <img src="{{ 'backend/assets/images/brand-logos/desktop-dark.png' }}" alt="logo"
                             class="desktop-dark">
