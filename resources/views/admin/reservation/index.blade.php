@@ -1,154 +1,62 @@
+{{-- filepath: resources/views/admin/reservation/index.blade.php --}}
 @extends('admin.layouts.master')
-@section('title')
-    Valex - User Management
-@endsection
-@push('styles')
-    <link href="//cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css" rel="stylesheet">
-@endpush
 
+@section('title', 'Reservations List')
 
 @section('contents')
-    <!-- Page Header -->
-    <div class="md:flex block items-center justify-between mb-6 mt-[2rem]  page-header-breadcrumb">
-        <div class="my-auto">
-            <h5 class="page-title text-[1.3125rem] font-medium text-defaulttextcolor mb-0">Customers Reservation Table</h5>
-
-        </div>
-
-    </div>
-    <!-- Page Header Close -->
-    <!-- Start:: row-1 -->
-    <div class="grid grid-cols-12 gap-6 text-defaultsize">
-        <div class="xl:col-span-12 col-span-12">
-            <div class="box">
-                <div class="box-header flex justify-between">
-                    <div class="box-title">
-                        List of Customers
-                    </div>
-
-
-                </div>
-                <div class="box-body">
-
-                    <div class="overflow-auto table-bordered">
-                        <table id="usersTable" class="ti-custom-table ti-striped-table ti-custom-table-hover">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Contact Number</th>
-                                    <th>Address</th>
-                                    <th>Room Type</th>
-                                    <th>Packages</th>
-                                    <th>Number of Customer</th>
-                                    <th>Date to Stay</th>
-                                    <th>Length of Days to Stay</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-
-                </div>
-                <div class="box-footer hidden border-t-0">
-                </div>
+    <div class="main-content pt-8"> <!-- Added pt-8 for top padding -->
+        <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-800">Reservations List</h1>
+                <a type="button" href="{{ route('admin.room.index') }}" class="ti-btn ti-btn-primary ti-btn-wave">
+                    <i class="ri-add-line"></i> Add New Reservation
+                </a>
             </div>
+            <table class="table-auto w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr class="bg-gray-100">
+
+                        <th class="border border-gray-300 px-4 py-2">Name</th>
+                        <th class="border border-gray-300 px-4 py-2">Address</th>
+                        <th class="border border-gray-300 px-4 py-2">Phone</th>
+                        <th class="border border-gray-300 px-4 py-2">Room Type</th>
+                        <th class="border border-gray-300 px-4 py-2">Check-In</th>
+                        <th class="border border-gray-300 px-4 py-2">Check-Out</th>
+                        <th class="border border-gray-300 px-4 py-2">Total Guests</th>
+                        <th class="border border-gray-300 px-4 py-2">Paid</th> <!-- Added Paid column -->
+                        <th class="border border-gray-300 px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($reservations as $reservation)
+                        <tr>
+
+                            <td class="border border-gray-300 px-4 py-2">{{ $reservation->first_name }}
+                                {{ $reservation->last_name }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ $reservation->address }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ $reservation->phone }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ ucfirst($reservation->room_type) }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ $reservation->check_in }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ $reservation->check_out }}</td>
+                            <td class="border border-gray-300 px-4 py-2">
+                                {{ $reservation->guests_adults + $reservation->guests_children }}
+                            </td>
+                            <td class="border border-gray-300 px-4 py-2">
+                                @if ((bool) $reservation->is_paid === true)
+                                    <span class="text-red-600 font-semibold">No</span>
+                                @else
+                                    <span class="text-green-600 font-semibold">Yes</span>
+                                @endif
+
+                            </td>
+                            <td class="border border-gray-300 px-4 py-2">
+                                <a href="{{ route('admin.admin.receipt.show', $reservation->id) }}"
+                                    class="text-blue-500 hover:underline">View Receipt</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
-    <!-- End:: row-1 -->
 @endsection
-
-{{-- render scripts --}}
-@push('scripts')
-    <script src="{{ asset('backend/assets/js/jquery-3.7.1.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/dataTables.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
-
-    {{-- make a javascript to fetch data and place it on the data table --}}
-
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        //delete entry
-        $(document).ready(function() {
-            $('#usersTable').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{{ route('admin.users.get-all') }}', // Adjust the route if needed
-                columns: [{
-                        data: 'DT_RowIndex',
-                        name: 'id'
-                    },
-                    {
-                        data: 'name',
-                        name: 'name'
-                    },
-                    {
-                        data: 'email',
-                        name: 'email'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
-                    }
-                ],
-
-            });
-
-        });
-        // delete entry
-        $('body').on('click', '.delete-entry', function(event) {
-            event.preventDefault();
-
-            let deleteUrl = $(this).attr('href');
-
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: 'DELETE',
-                        url: deleteUrl,
-                        success: function(data) {
-                            if (data.status == 'success') {
-                                // Get the current page number
-                                var table = $('#usersTable').DataTable();
-                                var currentPage = table.page();
-
-                                Swal.fire('Deleted!', data.message, 'success')
-                                    .then(() => {
-                                        // Remove the row from the DataTable and redraw without changing the pagination
-                                        table.row($(event.target).closest('tr')).remove()
-                                            .draw(false);
-
-                                        // Maintain the current page
-                                        table.page(currentPage).draw(false);
-                                    });
-                            } else if (data.status == 'error') {
-                                Swal.fire('Unable to Delete!', data.message, 'error');
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            Swal.fire('Unable to Delete!',
-                                'An error occurred while processing your request.',
-                                'error');
-                        }
-                    });
-                }
-            });
-        });
-    </script>
-@endpush

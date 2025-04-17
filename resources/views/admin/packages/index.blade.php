@@ -34,7 +34,8 @@
                                     <p class="text-gray-500 dark:text-white/70">Ideal for birthdays, weddings, reunions, and
                                         corporate gatherings.</p>
                                     <div class="flex justify-center my-7 items-baseline">
-                                        <span class="me-2 text-5xl font-bold text-gray-800 dark:text-white">$10</span>
+                                        <span
+                                            class="me-2 text-5xl font-bold text-gray-800 dark:text-white">₱15,000.00</span>
                                         <span class="text-gray-500 dark:text-white/70 font-medium"> / Day</span>
                                     </div>
                                     <ul class="p-0 my-4 space-y-3">
@@ -73,7 +74,7 @@
                                     <p class="text-gray-500 dark:text-white/70">Perfect for guests who want a hassle-free
                                         and premium resort experience.</p>
                                     <div class="flex justify-center my-7 items-baseline">
-                                        <span class="me-2 text-5xl font-bold text-gray-800 dark:text-white">$50</span>
+                                        <span class="me-2 text-5xl font-bold text-gray-800 dark:text-white">₱2,000.00</span>
                                         <span class="text-gray-500 dark:text-white/70 font-medium"> / Day</span>
                                     </div>
                                     <ul class="p-0 my-4 space-y-3">
@@ -113,7 +114,7 @@
                                     <p class="text-gray-500 dark:text-white/70">Designed for families looking to enjoy
                                         quality time together.</p>
                                     <div class="flex justify-center my-7 items-baseline">
-                                        <span class="me-2 text-5xl font-bold text-gray-800 dark:text-white">$25</span>
+                                        <span class="me-2 text-5xl font-bold text-gray-800 dark:text-white">₱3,500.00</span>
                                         <span class="text-gray-500 dark:text-white/70 font-medium"> / Day</span>
                                     </div>
                                     <ul class="p-0 my-4 space-y-3">

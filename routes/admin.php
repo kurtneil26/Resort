@@ -8,7 +8,11 @@ use App\Http\Controllers\Admin\AmenitiesController;
 use App\Http\Controllers\Admin\PackagesController;
 use App\Http\Controllers\Admin\HelpController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ModalController;
+use App\Http\Controllers\Admin\ReceiptController;
 use App\Http\Controllers\Admin\ReservationController;
+
+
 
 
 
@@ -24,14 +28,19 @@ Route::get('users/data', [AdminController::class, 'getUsers'])->name('users.get'
 Route::get('user-list', [UserController::class, 'getUsers'])->name('users.get-all');
 Route::resource(name: 'users', controller: UserController::class);
 
-//route for room
+// Room management
 Route::get('room', [RoomController::class, 'index'])->name('room.index');
+
+// Modal specific route
+Route::get('room/modal', [ModalController::class, 'modal'])->name('room.modal');
 
 //route for amenities
 Route::get('amenities', [AmenitiesController::class, 'index'])->name('amenities.index');
 
 //route for packages
 Route::get('packages', [PackagesController::class, 'index'])->name('packages.index');
+
+
 
 //route for help
 Route::get('help', [HelpController::class, 'index'])->name('help.index');
@@ -41,3 +50,15 @@ Route::get('DashboardController', [DashboardController::class, 'index'])->name('
 
 //route for reservation
 Route::get('reservation', [ReservationController::class, 'index'])->name('reservation.index');
+
+// Receipt routes
+// Single level grouping
+Route::prefix('admin/receipt')->name('admin.receipt.')->group(function () {
+    Route::post('/', [ReceiptController::class, 'store'])->name('store');
+    Route::get('/{reservation}', [ReceiptController::class, 'show'])->name('show');
+});
+
+Route::get('/admin/receipt/{id}', [ReceiptController::class, 'show'])->name('admin.receipt.show');
+
+
+Route::get('/admin/reservation', [ReservationController::class, 'index'])->name('admin.reservation.index');
