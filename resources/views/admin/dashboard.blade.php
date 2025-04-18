@@ -7,107 +7,70 @@
     <!-- Start::page-header -->
     <div class="items-center justify-between block my-6 md:flex page-header-breadcrumb">
         <div>
-            <h4 class="mb-0 font-medium text-defaulttextcolor">Hi, {{ Auth::user()->name }} welcome back!</h4>
+            <h4 class="mb-0 font-medium text-defaulttextcolor">Hi, {{ Auth::user()->name }} Welcome back!</h4>
             <p class="-mt-[0.2rem] mb-0 text-textmuted">Sales monitoring dashboard.</p>
         </div>
-
     </div>
     <!-- End::page-header -->
 
-
-
-    <!-- row -->
     <div class="grid grid-cols-12 gap-x-6">
+        <!-- Today's Sales -->
         <div class="col-span-12 xl:col-span-3 lg:col-span-6 md:col-span-6 sm:col-span-12">
             <div class="box overflow-hidden sales-box bg-primary-gradient !rounded-sm">
                 <div class="px-4 pt-4 pb-2">
-                    <div>
-                        <h6 class="mb-3 text-[.75rem] font-medium text-fixed-white">TODAY BOOK</h6>
-                    </div>
-                    <div class="pb-0 mt-0">
-                        <div class="flex">
-                            <div>
-                                <h4 class="font-bold text-[1.25rem] text-fixed-white">5</h4>
-                                <p class="mb-0 text-[.75rem] text-fixed-white opacity-[0.7]">Compared to
-                                    yesterday</p>
-                            </div>
-                            <span class="my-auto float-end ms-auto">
-                                <i class="fas fa-arrow-circle-up text-fixed-white"></i>
-                                <span class="text-fixed-white opacity-[0.7]"> +7</span>
-                            </span>
+                    <h6 class="mb-3 text-[.75rem] font-medium text-fixed-white">TODAY'S SALES</h6>
+                    <div class="flex">
+                        <div>
+                            <h4 class="font-bold text-[1.25rem] text-fixed-white">₱{{ number_format($todaySales, 2) }}</h4>
+
                         </div>
                     </div>
                 </div>
-                <div id="compositeline" class="!-mb-[2px]"></div>
             </div>
         </div>
+
+        <!-- This Week's Sales -->
         <div class="col-span-12 xl:col-span-3 lg:col-span-6 md:col-span-6 sm:col-span-12">
-            <div class="box  overflow-hidden sales-card bg-danger-gradient !rounded-sm">
+            <div class="box overflow-hidden sales-card bg-danger-gradient !rounded-sm">
                 <div class="px-4 pt-4 pb-2">
-                    <div>
-                        <h6 class="mb-3 text-[.75rem] font-medium text-fixed-white">THIS WEEK BOOKINGS</h6>
-                    </div>
-                    <div class="pb-0 mt-0">
-                        <div class="flex">
-                            <div>
-                                <h4 class="text-[1.25rem] font-bold text-fixed-white">20</h4>
-                                <p class="mb-0  text-[.75rem] text-fixed-white opacity-[0.7]">Compared to
-                                    last week</p>
-                            </div>
-                            <span class="my-auto float-end ms-auto">
-                                <i class="fas fa-arrow-circle-down text-fixed-white"></i>
-                                <span class="text-fixed-white opacity-[0.7]"> -13</span>
-                            </span>
+                    <h6 class="mb-3 text-[.75rem] font-medium text-fixed-white">THIS WEEK SALES</h6>
+                    <div class="flex">
+                        <div>
+                            <h4 class="text-[1.25rem] font-bold text-fixed-white">₱{{ number_format($weekSales, 2) }}</h4>
+
                         </div>
                     </div>
                 </div>
-                <div id="compositeline2" class="!-mb-[2px]"></div>
             </div>
         </div>
+
+        <!-- This Month's Sales -->
         <div class="col-span-12 xl:col-span-3 lg:col-span-6 md:col-span-6 sm:col-span-12">
-            <div class="box  overflow-hidden sales-card bg-success-gradient !rounded-sm">
+            <div class="box overflow-hidden sales-card bg-success-gradient !rounded-sm">
                 <div class="px-4 pt-4 pb-2">
-                    <div>
-                        <h6 class="mb-3 text-[.75rem] font-medium text-fixed-white">THIS MONTH BOOKINGS</h6>
-                    </div>
-                    <div class="pb-0 mt-0">
-                        <div class="flex">
-                            <div>
-                                <h4 class="text-[1.25rem] font-bold text-fixed-white">57</h4>
-                                <p class="mb-0 text-[.75rem] text-fixed-white opacity-[0.7]">Compared to
-                                    last month</p>
-                            </div>
-                            <span class="my-auto float-end ms-auto">
-                                <i class="fas fa-arrow-circle-up text-fixed-white"></i>
-                                <span class="text-fixed-white opacity-[0.7]"> +69</span>
-                            </span>
+                    <h6 class="mb-3 text-[.75rem] font-medium text-fixed-white">THIS MONTH SALES</h6>
+                    <div class="flex">
+                        <div>
+                            <h4 class="text-[1.25rem] font-bold text-fixed-white">₱{{ number_format($monthSales, 2) }}</h4>
+
                         </div>
                     </div>
                 </div>
-                <div id="compositeline3" class="!-mb-[2px]"></div>
             </div>
         </div>
+
+        <!-- This Year's Sales -->
         <div class="col-span-12 xl:col-span-3 lg:col-span-6 md:col-span-6 sm:col-span-12">
-            <div class="box  overflow-hidden sales-card bg-warning-gradient !rounded-sm">
+            <div class="box overflow-hidden sales-card bg-warning-gradient !rounded-sm">
                 <div class="px-4 pt-4 pb-2">
-                    <div>
-                        <h6 class="mb-3 text-[.75rem] font-medium text-fixed-white">THIS YEAR BOOKINGS</h6>
-                    </div>
-                    <div class="pb-0 mt-0">
-                        <div class="flex">
-                            <div>
-                                <h4 class="text-[1.25rem] font-bold text-fixed-white">639</h4>
-                                <p class="mb-0 text-[.75rem] text-fixed-white opacity-[0.7]">Compared to
-                                    last year</p>
-                            </div>
-                            <span class="my-auto float-end ms-auto">
-                                <i class="fas fa-arrow-circle-down text-fixed-white"></i>
-                                <span class="text-fixed-white opacity-[0.7]"> +789</span>
-                            </span>
+                    <h6 class="mb-3 text-[.75rem] font-medium text-fixed-white">THIS YEAR SALES</h6>
+                    <div class="flex">
+                        <div>
+                            <h4 class="text-[1.25rem] font-bold text-fixed-white">₱{{ number_format($yearSales, 2) }}</h4>
+
                         </div>
                     </div>
                 </div>
-                <div id="compositeline4" class="!-mb-[2px]"></div>
             </div>
         </div>
     </div>
@@ -191,6 +154,7 @@
     </div>
     <!-- row closed -->
 @endsection
+
 @push('scripts')
     <!-- Apex Charts JS -->
     <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js') }}"></script>

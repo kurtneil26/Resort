@@ -196,14 +196,14 @@
                                         <label class="ti-form-label dark:text-defaulttextcolor/70 mb-0">Guests 15+ Years
                                             *</label>
                                         <input type="number" name="guests_adults" class="ti-form-input rounded-sm"
-                                            min="0" max="10" required onchange="updateTotalGuests()">
+                                            min="0" max="1000" required onchange="updateTotalGuests()">
                                     </div>
                                     <div class="space-y-2">
                                         <label class="ti-form-label dark:text-defaulttextcolor/70 mb-0">Guests 14 Years &
                                             Below
                                             *</label>
                                         <input type="number" name="guests_children" class="ti-form-input rounded-sm"
-                                            min="0" max="10" required onchange="updateTotalGuests()">
+                                            min="0" max="1000" required onchange="updateTotalGuests()">
                                     </div>
                                 </div>
 
