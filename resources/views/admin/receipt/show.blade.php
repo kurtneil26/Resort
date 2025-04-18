@@ -5,7 +5,14 @@
 
 @section('contents')
     <div class="main-content">
-        <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8">
+        <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8 relative">
+            <!-- Exit Icon -->
+            <a href="{{ route('admin.reservation.index') }}"
+                class="absolute top-4 right-1/5 bg-red-500 hover:bg-red-600 rounded-full w-10 h-10 flex items-center justify-center transition-colors duration-200 shadow-sm"
+                title="Close receipt">
+                <i class="fas fa-times text-xl text-white"></i> <!-- Close icon -->
+            </a>
+
             <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Reservation Receipt</h1>
 
             <div class="border-b pb-4 mb-6">
@@ -26,9 +33,9 @@
                     <p><strong>Room Type:</strong> {{ ucfirst($reservation->room_type) }}</p>
                     <p><strong>Check-In:</strong> {{ $reservation->check_in }}</p>
                     <p><strong>Check-Out:</strong> {{ $reservation->check_out }}</p>
-                    <p><strong>Guests:</strong> {{ $reservation->guests_adults }} Adults,
+                    <p><strong>Guests:</strong> {{ $reservation->guests_adults }} 15+ Years Old,
                         {{ $reservation->guests_children }}
-                        Children</p>
+                        0-14 Years Old</p>
                     @if ($reservation->package)
                         <p><strong>Package:</strong> {{ ucfirst(str_replace('_', ' ', $reservation->package)) }}</p>
                     @else
@@ -53,7 +60,7 @@
 
             <div class="bg-gray-100 p-4 rounded-lg">
                 <h2 class="text-xl font-semibold text-gray-700 mb-2">Total Amount</h2>
-                <p class="text-2xl font-bold text-green-600 text-right">₱{{ number_format($totalAmount, 2) }}</p>
+                <p class="text-2xl font-bold text-red-600 text-right">₱{{ number_format($reservation->total_price, 2) }}</p>
             </div>
         </div>
     </div>

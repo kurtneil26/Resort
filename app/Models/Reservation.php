@@ -13,11 +13,15 @@ class Reservation extends Model
     protected $fillable = [
         'first_name',
         'last_name',
-        'email',
         'phone',
-        'room_type',
+        'email',
+        'address', // Ensure this is included
+        'city',
+        'state',
+        'postal_code',
         'check_in',
         'check_out',
+        'room_type',
         'guests_adults',
         'guests_children',
         'package',

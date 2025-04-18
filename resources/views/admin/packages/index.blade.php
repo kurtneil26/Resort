@@ -61,7 +61,7 @@
                                         </li>
                                     </ul>
                                     <div class="text-center mt-2">
-                                        <div class="ti-btn w-full p-3 ti-btn-warning">Choose Packages</div>
+                                        <div class="ti-btn w-full p-3 ti-btn-warning">Special Event Packages</div>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                                         </li>
                                     </ul>
                                     <div class="text-center mt-2">
-                                        <div class="ti-btn w-full p-3 ti-btn-primary">Choose Packages</div>
+                                        <div class="ti-btn w-full p-3 ti-btn-primary">All Inclusive Packages</div>
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                                         </li>
                                     </ul>
                                     <div class="text-center mt-2">
-                                        <div class="ti-btn w-full p-3 ti-btn-danger">Choose Packages</div>
+                                        <div class="ti-btn w-full p-3 ti-btn-danger">Family Fun Packages</div>
                                     </div>
                                 </div>
                             </div>

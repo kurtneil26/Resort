@@ -17,28 +17,26 @@ class ReceiptController extends Controller
     public function store(Request $request)
     {
         // Validate and save the reservation
-        $validatedData = $request->validate([
+        $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'phone' => 'required|string',
             'email' => 'required|email',
+            'address' => 'required|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'postal_code' => 'required|string',
             'check_in' => 'required|date',
-            'check_out' => 'required|date|after:check_in',
+            'check_out' => 'required|date',
             'room_type' => 'required|string',
-            'address' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
-            'postal_code' => 'required|string|max:10',
             'guests_adults' => 'required|integer|min:1',
             'guests_children' => 'required|integer|min:0',
-            'package' => 'nullable|string',
-            'special_requests' => 'nullable|string',
         ]);
 
-        $reservation = Reservation::create($validatedData);
+        $reservation = Reservation::create($request->all());
 
         // Redirect to the reservation list
-        return redirect()->route('admin.reservation.index');
+        return redirect()->route('admin.admin.receipt.show', $reservation->id);
     }
 
     public function show($id)

@@ -57,8 +57,9 @@ Route::prefix('admin/receipt')->name('admin.receipt.')->group(function () {
     Route::post('/', [ReceiptController::class, 'store'])->name('store');
     Route::get('/{reservation}', [ReceiptController::class, 'show'])->name('show');
 });
-
-Route::get('/admin/receipt/{id}', [ReceiptController::class, 'show'])->name('admin.receipt.show');
+// Receipt routes
+Route::post('/admin/receipt', [ReceiptController::class, 'store'])->name('admin.admin.receipt.store');
+Route::get('/admin/receipt/{id}', [ReceiptController::class, 'show'])->name('admin.admin.receipt.show');
 
 
 Route::get('/admin/reservation', [ReservationController::class, 'index'])->name('admin.reservation.index');

@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use App\Models\Reservation;
+
+class ReservationsTableSeeder extends Seeder
+{
+    public function run()
+    {
+        Reservation::create([
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'phone' => '+1234567890',
+            'email' => 'john.doe@example.com',
+            'address' => '123 Main St',
+            'city' => 'City',
+            'state' => 'State',
+            'postal_code' => '12345',
+            'check_in' => '2025-04-17',
+            'check_out' => '2025-04-18',
+            'room_type' => 'deluxe',
+            'guests_adults' => 2,
+            'guests_children' => 1,
+            'package' => 'all_inclusive',
+            'special_requests' => 'No special requests',
+        ]);
+    }
+}
